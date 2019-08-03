@@ -14,7 +14,7 @@ const prefix = "1"
 
 
 client.on('ready', () => {
-     client.user.setActivity("type !play",{type: 'PLAYING'})
+     client.user.setActivity("type 1play",{type: 'PLAYING'})
 
 });
 /////////////////////////
