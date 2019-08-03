@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const moment = require('moment');
 const Util = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
@@ -10,28 +11,24 @@ const ytdl = require('ytdl-core');
 const fs = require('fs');
 const gif = require("gif-search");
 const prefix = "1"
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
-////////////////////////
-//////////////////////
+
+
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    console.log(`in ${client.guilds.size} servers `)
-    console.log(`[Codes] ${client.users.size}`)
-    client.user.setStatus("idle")
+     client.user.setActivity("type !play",{type: 'PLAYING'})
+
 });
-client.on('ready', () => {
-     client.user.setActivity("Type 1help",{type: 'WATCHING'});
- 
-});
+/////////////////////////
+////////////////////////
+//////////////////////
+/////////////////////////
+////////////////////////
+//////////////////////
+/////////////////////////
+////////////////////////
+//////////////////////
+/////////////////////////
+////////////////////////
+//////////////////////
 client.on('message', async msg => { 
 	if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(prefix)) return undefined;
@@ -271,7 +268,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
         ***__أوامر الموسيفة__***
 **
 ${prefix}play - لتشغيل أغنية برآبط أو بأسم
-${prefix}come - حتى تثبت البوت بروم
 ${prefix}skip - لتجآوز الأغنية الحآلية
 ${prefix}pause - إيقآف الأغنية مؤقتا
 ${prefix}resume - لموآصلة الإغنية بعد إيقآفهآ مؤقتا
@@ -342,12 +338,34 @@ message.member.voiceChannel.join();
 }
 });
 
-
-
-
-
-
- 
-
+client.on('message', function(message) {
+	const myID = "346045919072092161";
+    let args = message.content.split(" ").slice(1).join(" ");
+    if(message.content.startsWith(prefix + "howareyoualashaq")) {
+		        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setUsername(args);
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "stream")) {
+		        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args , 'https://twitch.tv/6xlez1');
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "listen")) {
+				        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'LISTENING'});
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
