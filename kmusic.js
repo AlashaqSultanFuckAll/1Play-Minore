@@ -23,7 +23,7 @@ const PREFIX = process.env.PREFIX
 
 
 const client = new Discord.Client({ disableEveryone: true});
-const ownerID = ["470712192329711628"]; // ايدي ادارة البوت او صاحب البوت ..
+const ownerID = ["330010844199124992]; // ايدي ادارة البوت او صاحب البوت ..
 
 
 client.commands = new Discord.Collection();
@@ -72,7 +72,7 @@ client.on('warn', console.warn);
 client.on('error', console.error);
 
 client.on('ready', () => {
-    console.log(`Created By: Kahrbaa`);
+    console.log(`Created By: Sultan`);
     console.log(`Guilds: ${client.guilds.size}`);
     console.log(`Users: ${client.users.size}`);
     client.user.setActivity(`Type ${prefix}help`,{type: 'Playing'});
